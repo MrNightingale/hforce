@@ -1,0 +1,30 @@
+.page-wrapper {
+    max-width: 768px;
+    margin: 0 auto;
+}
+
+.list {
+    position: relative;
+}
+
+.list-item {
+    margin: 20px 0;
+    padding: 10px;
+    border: 3px solid #106CC8;
+    min-width: 200px;
+    cursor: pointer;
+}
+
+.add-btn {
+    position: absolute;
+    bottom: -50px;
+    right: 0;
+}
+
+.add-icon {
+    line-height: 1.5;
+}
+
+.list-item__btn {
+    font-size: 18px;
+}
