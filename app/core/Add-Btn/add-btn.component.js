@@ -1,10 +1,5 @@
 angular.
   module('addBtn').
   component('addBtn', {
-    templateUrl: 'core/Add-Btn/add-btn.template.html',
-    controller: AddBtnController
+    templateUrl: 'core/Add-Btn/add-btn.template.html'
 });
-
-function AddBtnController() {
-
-}

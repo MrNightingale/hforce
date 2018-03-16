@@ -6,34 +6,91 @@ component('list', {
   controllerAs: 'ctrl'
 });
 
-function ListController($scope, $mdDialog) {
-  $scope.items = [];
+function ListController($mdDialog) {
+  const self = this;
+  self.items = ['First Item'];
 
-  this.addListItem = function() {
-    var confirm = $mdDialog.prompt()
+  this.addListItem = () => {
+    let confirm = $mdDialog.prompt()
       .title('What is your item name?')
       .placeholder('Item name')
       .ariaLabel('Item name')
       .ok('Add')
       .cancel('No, thanks');
 
-    $mdDialog.show(confirm).then(function(result) {
+    $mdDialog.show(confirm).then(result => {
       if (result === undefined) {
         alert('Please, type item name');
         return;
       }
 
-      for (var i = 0; i < $scope.items.length; i++) {
-        if ($scope.items[i] === result) {
+      for (let i = 0; i < self.items.length; i++) {
+        if (self.items[i] === result) {
           alert('You already have such item');
           return;
         }
       }
 
-      $scope.items.push(result);
+      self.items.push(result);
 
-    }, function() {
+    }, () => {
         alert('You didn\'t name your item.');
+    });
+  };
+
+  this.cloneItem = () => {
+    let confirm = $mdDialog.prompt()
+      .title('Do you want to clone your item?')
+      .placeholder('Enter your new Item name')
+      .ariaLabel('Clone Item name')
+      .ok('Clone')
+      .cancel('No, thanks');
+
+    $mdDialog.show(confirm).then(result => {
+      if (result === undefined) {
+        alert('Please, type item name');
+        return;
+      }
+
+      for (let i = 0; i < self.items.length; i++) {
+        if (self.items[i] === result) {
+          alert('You already have such item');
+          return;
+        }
+      }
+
+      self.items.push(result);
+
+    }, () => {
+      alert('You didn\'t name your item.');
+    });
+  };
+
+  this.editItem = () => {
+    let confirm = $mdDialog.prompt()
+      .title('Do you want to edit your item?')
+      .placeholder('Enter your edited Item name')
+      .ariaLabel('Edit Item name')
+      .ok('Edit')
+      .cancel('No, thanks');
+
+    $mdDialog.show(confirm).then(result => {
+      if (result === undefined) {
+        alert('Please, type edited name');
+        return;
+      }
+
+      for (let i = 0; i < self.items.length; i++) {
+        if (self.items[i] === result) {
+          alert('You already have such item');
+          return;
+        }
+      }
+
+      // TODO add edit feature
+
+    }, () => {
+      alert('You didn\'t name your item.');
     });
   };
 }

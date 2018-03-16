@@ -1,4 +1,8 @@
 <div flex layout="column"  layout-align="space-around center" class="list">
-    <list-item ng-repeat="item in items" title="item"></list-item>
+    <div ng-repeat="item in ctrl.items track by $index" title="item" class="list-item" layout="row" layout-align="space-around center">
+        <p class="list-item__text" flex="70">{{ item }}</p>
+        <clone-btn flex="15" ng-click="ctrl.cloneItem()"></clone-btn>
+        <edit-btn flex="15" ng-click="ctrl.editItem()"></edit-btn>
+    </div>
     <add-btn ng-click="ctrl.addListItem()"></add-btn>
 </div>
